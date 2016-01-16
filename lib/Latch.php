@@ -336,7 +336,7 @@ final class Latch {
 	 * @return a string representation of the current time in UTC to be used in a Date HTTP Header
 	 */
 	private function getCurrentUTC() {
-		$time = new DateTime('now', new DateTimeZone('UTC'));
+		$time = new \DateTime('now', new \DateTimeZone('UTC'));
 		return $time->format(self::$UTC_STRING_FORMAT);
 	}
 }
