@@ -20,13 +20,15 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+namespace ElevenPaths\Latch;
+
 class Error {
 	private $code;
 	private $message;
-	
-	
+
+
 	/**
-	 * 
+	 *
 	 * @param string $json a Json representation of an error with "code" and "message" elements
 	 */
 	function __construct($json) {
@@ -38,15 +40,15 @@ class Error {
 			error_log("Error creating error object from string " . $json);
 		}
 	}
-	
+
 	public function getCode() {
 		return $this->code;
 	}
-	
+
 	public function getMessage() {
 		return $this->message;
 	}
-	
+
 	/**
 	 *
 	 * @return Json representation with the code and message of the error
@@ -56,7 +58,7 @@ class Error {
 		if(!empty($this->code)) {
 		    $error["code"] = $this->code;
 		}
-		
+
 		if(!empty($this->message)) {
 		    $error["message"] = $this->message;
 		}

@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-require_once("Error.php");
+namespace ElevenPaths\Latch;
 
 /**
  * This class models a response from any of the endpoints in the Latch API.
@@ -31,7 +31,7 @@ require_once("Error.php");
  * @author Jose Palazon <jose@11paths.com>
  *
  */
-class LatchResponse {
+class Response {
 
 	public $data = null;
 	public $error = null;
@@ -48,10 +48,10 @@ class LatchResponse {
 			}
 			if (array_key_exists("error", $json)) {
 				$this->error = new Error($json->{"error"});
-			} 
+			}
 		}
 	}
-	
+
 	/**
 	 *
 	 * @return JsonObject the data part of the API response
@@ -69,7 +69,7 @@ class LatchResponse {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Error the error part of the API response, consisting of an error code and an error message
 	 */
 	public function getError() {
@@ -93,10 +93,10 @@ class LatchResponse {
 		if(!empty($this->data)) {
 			$response["data"] = $data;
 		}
-		
+
 		if(!empty($error)) {
 			$response["error"] = $error;
-		} 
+		}
 		return json_encode($response);
 	}
 }

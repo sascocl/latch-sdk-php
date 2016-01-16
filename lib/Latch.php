@@ -20,6 +20,8 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+namespace ElevenPaths\Latch;
+
 final class Latch {
 	private static $API_VERSION = "0.9";
 	public static $API_HOST = "https://latch.elevenpaths.com";
@@ -153,19 +155,19 @@ final class Latch {
 	}
 
 	private function HTTP_GET_proxy($url) {
-		return new LatchResponse($this->HTTP("GET", self::$API_HOST . $url, $this->authenticationHeaders("GET", $url, null), null));
+		return new Response($this->HTTP("GET", self::$API_HOST . $url, $this->authenticationHeaders("GET", $url, null), null));
 	}
 
 	private function HTTP_POST_proxy($url, $params) {
-		return new LatchResponse($this->HTTP("POST", self::$API_HOST . $url, $this->authenticationHeaders("POST", $url, null, null,$params), $params));
+		return new Response($this->HTTP("POST", self::$API_HOST . $url, $this->authenticationHeaders("POST", $url, null, null,$params), $params));
 	}
 
 	private function HTTP_PUT_proxy($url, $params) {
-		return new LatchResponse($this->HTTP("PUT", self::$API_HOST . $url, $this->authenticationHeaders("PUT", $url, null, null, $params), $params));
+		return new Response($this->HTTP("PUT", self::$API_HOST . $url, $this->authenticationHeaders("PUT", $url, null, null, $params), $params));
 	}
 
 	private function HTTP_DELETE_proxy($url) {
-		return new LatchResponse($this->HTTP("DELETE", self::$API_HOST . $url, $this->authenticationHeaders("DELETE", $url, null), null));
+		return new Response($this->HTTP("DELETE", self::$API_HOST . $url, $this->authenticationHeaders("DELETE", $url, null), null));
 	}
 
 	public function pairWithId($accountId) {
